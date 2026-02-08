@@ -1,0 +1,24 @@
+# Dynamic configuration for Temporal development with SQL + OpenSearch
+# This file contains runtime configuration that can be updated without restarting the server
+
+# Limits
+system.forceSearchAttributesCacheRefreshOnRead:
+  - value: true
+
+# History service limits
+history.maxAutoResetPoints:
+  - value: 20
+
+# Matching service limits
+matching.numTaskqueueReadPartitions:
+  - value: 1
+matching.numTaskqueueWritePartitions:
+  - value: 1
+
+# Frontend service limits
+frontend.enableClientVersionCheck:
+  - value: false
+
+# Visibility
+system.advancedVisibilityWritingMode:
+  - value: "dual"

@@ -1,0 +1,7 @@
+FROM ubuntu:resolute
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+WORKDIR /api
+COPY .python-version pyproject.toml uv.lock /api/
+RUN uv sync
+COPY api_ocr.py /api/

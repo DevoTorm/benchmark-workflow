@@ -1,0 +1,20 @@
+[project]
+name = "benchmark-dags"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard-no-fastapi-cloud-cli]>=0.128.0",
+    "httpx>=0.28.1",
+    "minio>=7.2.20",
+    "pydantic-settings>=2.12.0",
+    "pypdf[image]>=6.6.2",
+    "temporalio>=1.22.0",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.1.0",
+    "ipywidgets>=8.1.8",
+]

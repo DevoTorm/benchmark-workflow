@@ -1,0 +1,14 @@
+FROM ubuntu:resolute
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+WORKDIR /app
+COPY .python-version pyproject.toml uv.lock /app/
+RUN uv sync
+COPY utils.py /app/
+COPY temporal_workflow/worker_all.py temporal_workflow/worker_ml.py temporal_workflow/worker_pdf.py /app/temporal_workflow/
+COPY temporal_workflow/activities.py temporal_workflow/workflows.py temporal_workflow/__init__.py /app/temporal_workflow/
+# Variables d'environnement par défaut
+ENV TEMPORAL_HOST=temporal:7233
+ENV MINIO_ENDPOINT=minio:9000
+ENV MINIO_BUCKET=temporal-files
+
